@@ -26,9 +26,11 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Restaurant Search</title>
+    <title>Resto</title>
   </head>
   <body>
+    <header>
+      <a id="button"></a>
     <!-- BANNER -->
       <nav id="mainNav"  class="navbar navbar-expand-md py-0 fixed-top navbar-dark">
         <div class="container-fluid" style="font-size: 1.5rem;">
@@ -51,61 +53,59 @@
 
     <!-- SEARCHING -->
 
-    <section class="container-fluid" >
-      <div class="row">
-        <div class="col-md-8">
-          <form class="row g-2 search-bar" action="/" method="post" style="padding-left: 38px;">
-            <div class="col-md-9">
-              <input
-                type="text"
-                class="form-control"
-                name="search_term"
-                placeholder="Enter restaurant name..."
-                required
-              />
-            </div>
-            <div class="col-md-3">
-              <button type="submit" class="btn btn-primary mb-3">Search</button>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-4">
-            <label class="fs-6 fw-bold">SORT BY</label>
-            <button
-              class="btn btn-outline-primary"
-              id="price-sort"
-              onclick=
-            >
-              PRICE
-              <i class="fa-solid fa-up-down"></i>
-            </button>
-            <button class="btn btn-outline-primary" id="rating-sort">
-              RATINGS
-              <i class="fa-solid fa-up-down"></i>
-            </button>
+      <section class="container-fluid" >
+        <div class="row">
+          <div class="col-md-8">
+            <form class="row g-2 search-bar" action="/" method="POST" style="padding-left: 38px;">
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="search_term"
+                  placeholder="Enter restaurant name..."
+                  required
+                />
+              </div>
+              <div class="col-md-3">
+                <button type="submit" class="btn btn-primary mb-3">Search</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+              <label class="fs-6 fw-bold">SORT BY</label>
+              <button
+                class="btn btn-outline-primary"
+                id="price-sort"
+                onclick=
+              >
+                PRICE
+                <i class="fa-solid fa-up-down"></i>
+              </button>
+              <button class="btn btn-outline-primary" id="rating-sort">
+                RATINGS
+                <i class="fa-solid fa-up-down"></i>
+              </button>
+          </div>
+          
         </div>
         
-      </div>
-      
-    </section>
-
-    <!-- SORTING -->
-
+      </section>
+    </header>
     
-
+    <!-- SORTING -->
 
     <div class="container-fluid main-content" style="padding-left: 60px;">
       <div class="row row2">
         <div class="col-md-3 filters" style="border-right: solid;">
           <h3>FILTERS</h3>
-          <form method="POST" action="/filter">
+          <form name="filters">
             <div class="mb-3 form-check form-switch">
               
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                <label class="form-label" for="flexSwitchCheckDefault">Veg</label>
+                <input class="form-check-input" type="checkbox" role="switch" id="veg">
+                <label class="form-label" for="veg">Veg</label>
             </div>
-            <!-- <div class="mb-3">
-              <select class="form-select" aria-label="Default select example">
+            <div class="mb-3">
+              <select class="form-select" id="city">
                 <option selected>City</option>
                 <option value="bangalore">Bangalore</option>
                 <option value="mumbai">Mumbai</option>
@@ -119,6 +119,7 @@
                   class="form-range"
                   min="0"
                   max="5"
+                  value="0"
                   id="rating"
                   style="width: 90%;"
                 />5
@@ -130,7 +131,7 @@
                   class="form-check-input"
                   type="radio"
                   name="price"
-                  value=""
+                  value="500"
                   id=""
                 />
                 <label class="form-check-label" for=""> < 500 </label>
@@ -140,7 +141,7 @@
                   class="form-check-input"
                   type="radio"
                   name="price"
-                  value=""
+                  value="800"
                   id=""
                 />
                 <label class="form-check-label" for=""> < 800 </label>
@@ -150,7 +151,7 @@
                   class="form-check-input"
                   type="radio"
                   name="price"
-                  value=""
+                  value="1000"
                   id=""
                 />
                 <label class="form-check-label" for=""> < 1000 </label>
@@ -177,28 +178,28 @@
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault2">
                 <label class="form-label" for="flexSwitchCheckDefault2">Smoking</label>
             </div>
-            </div> -->
-            <div class="mb-3">
-              <button class="btn btn-primary filter-submit">GO</button>
             </div>
+            <!-- <div class="mb-3">
+              <button type="submit" class="btn btn-primary filter-submit">GO</button>
+            </div> -->
           </form>
           
         </div>
         <div class="container-fluid px-0 restaurant-list col-md-9">
           <% restaurants.forEach(restaurant => { %>
-          <div class="row m-3">
+          <div class="row m-3 restaurant-details" id="<%= restaurant._id %>">
             <div class="col-md-6">
               <img class="img-fluid" src="<%= restaurant.url %>" alt="" />
             </div>
             <div class="col-md-6 pr-2">
-              <div class="rating" ><i class="fa-solid fa-star"></i><%= restaurant.rating%></div>
+              <div class="rating" ><i class="fa-solid fa-star"></i><span class="rating-number"><%= restaurant.rating%></span></div>
               <h2 class="resto-name"><%= restaurant.name.toUpperCase() %> </h2>
               
-              <p class="place-name"><%= restaurant.location.toUpperCase()%></p>
+              <p class="place-name text-uppercase"><%= restaurant.location%></p>
               <p class="tags-name"><%= restaurant.tags%></p>
               <p class="desc"><%= restaurant.desc%></p>
               
-              <p>Price for 2 : Rs. <%= restaurant.price%></p>
+              <p>Cost (for 2) : Rs. <span class="price"><%= restaurant.price%></span></p>
               <button class="btn btn-outline-primary contact">CONTACT</button>
             </div>
           </div>
@@ -237,7 +238,9 @@
     
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/js/script.js"></script>
+    <script src="/js/sort.js"></script>
+    <script src="/js/filter.js"></script>
+    <script src="/js/scroll.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

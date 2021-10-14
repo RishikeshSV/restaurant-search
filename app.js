@@ -54,20 +54,6 @@ app.post("/", async (req, res) => {
   }
 });
 
-app.get("/search", (req, res) => {
-  console.log(req.body);
-});
-
-// FILTERING
-
-// app.post("/filter", (req, res) => {
-//   if (req) {
-//     console.log(req.body);
-//   } else {
-//     console.log("EMPTY");
-//   }
-// });
-
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
