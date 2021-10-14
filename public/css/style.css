@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&family=EB+Garamond:wght@500&family=PT+Sans&display=swap");
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background: #ffe5b4;
+}
+.navbar.scrolled {
+  background: rgb(246 165 107);
+  opacity: 0.9;
+  transition: background 500ms;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+#navbarSupportedContent {
+  font-size: 1.2rem;
+}
+section {
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+.fa-fire-flame-curved {
+  color: black;
+}
+a {
+  color: black !important;
+}
+.btn {
+  color: black !important;
+  background: #fdaf49;
+  border: orange;
+}
+.btn:hover {
+  outline: none;
+  box-shadow: none;
+  background: #e68609;
+}
+.btn:focus {
+  box-shadow: none;
+}
+.btn:active:focus {
+  box-shadow: none;
+}
+input:focus {
+  box-shadow: none !important;
+  outline-color: none !important;
+}
+
+i {
+  color: white;
+  padding-right: 7px;
+}
+.rating {
+  font-size: 1.2rem;
+  display: inline-block;
+  background: #f4a460;
+  color: white;
+  padding: 2px 10px;
+  margin-right: 6px;
+  font-weight: bold;
+}
+.resto-name {
+  font-family: "Roboto Slab", serif;
+  display: inline-block;
+}
+.place-name {
+  font-weight: 600;
+  font-size: large;
+}
+.tags-name {
+  text-transform: uppercase;
+  font-size: smaller;
+  letter-spacing: 1.1px;
+}
+.contact {
+  font-family: "EB Garamond", serif;
+}
+.desc {
+  font-family: "PT Sans", sans-serif;
+  line-height: 25px;
+}
+.btn:focus {
+  background-color: orange !important;
+}
+.btn:active {
+  background-color: orange !important;
+}
+.form-check-label {
+  font-size: 1.2rem;
+}
+.form-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+.main-content {
+  margin-bottom: 230px;
+}
+footer {
+  text-align: center;
+  height: 25vh;
+  font-size: 1.1rem;
+  background: #c34a2c;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0px 200px;
+}
+footer div {
+  font-weight: 700;
+}
+footer p {
+  color: white;
+  font-weight: 500;
+}
+@media (max-width: 750px) {
+  .search-bar {
+    padding-left: 0px !important;
+  }
+  .row > * {
+    width: auto;
+  }
+  .row2 > * {
+    width: 100%;
+  }
+  .main-content {
+    padding-left: var(--bs-gutter-x, 0.75rem) !important;
+  }
+  .filters {
+    border-right: none !important;
+    border-bottom: solid;
+  }
+  footer {
+    font-size: 10px;
+    height: 22vh;
+    padding: 0px;
+  }
+}

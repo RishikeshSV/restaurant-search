@@ -3,11 +3,24 @@ const mongoose = require("mongoose");
 const schema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
   },
   location: {
     type: String,
-    required: true,
+  },
+  tags: {
+    type: Array,
+  },
+  price: {
+    type: String,
+  },
+  rating: {
+    type: String,
+  },
+  url: {
+    type: String,
+  },
+  desc: {
+    desc: String,
   },
 });
 

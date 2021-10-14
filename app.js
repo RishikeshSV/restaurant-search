@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const bodyParser = require("body-parser");
 const connectDB = require("./connection");
 const Restaurant = require("./model/model");
 
@@ -11,43 +12,61 @@ const PORT = process.env.PORT || 8080;
 connectDB();
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + "/public"));
 
 app.set("view engine", "ejs");
 
+// HOME
+
 app.get("/", async (req, res) => {
-  const restaurants = await Restaurant.find().sort({ name: "asc" });
-  res.render("home", { restaurants: restaurants });
+  await Restaurant.find()
+    .then((data) => {
+      res.render("home", { restaurants: data });
+    })
+    .catch((data) => {
+      res.send({ message: "Error retriving information" });
+    });
 });
 
-app.get("/:name", async (req, res) => {
+// SEARCHING
+
+app.post("/", async (req, res) => {
   if (req.body.search_term) {
     const term = req.body.search_term.toLowerCase();
-    console.log(term);
-    Restaurant.find({ name: term })
+    let regex = new RegExp(term);
+    await Restaurant.find({
+      $or: [{ name: regex }, { location: regex }, { tags: regex }],
+    })
       .then((data) => {
-        if (!data) {
-          res.status(404).send({ message: "Restaurant not found" + term });
-        } else {
-          res.send(data);
-        }
+        res.render("home", { restaurants: data });
       })
       .catch((err) => {
-        res
-          .status(500)
-          .send({ message: "Error retrieving restaurant " + term });
+        res.send({ message: "Error retrieving restaurant " + term });
       });
   } else {
-    Restaurant.find()
-      .then((user) => {
-        res.send(user);
+    await Restaurant.find()
+      .then((data) => {
+        res.render("home", { restaurants: data });
       })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "Error Occurred while retriving information",
-        });
+      .catch((data) => {
+        res.send({ message: "Error retriving information" });
       });
   }
 });
+
+app.get("/search", (req, res) => {
+  console.log(req.body);
+});
+
+// FILTERING
+
+// app.post("/filter", (req, res) => {
+//   if (req) {
+//     console.log(req.body);
+//   } else {
+//     console.log("EMPTY");
+//   }
+// });
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
