@@ -131,7 +131,7 @@
               <p class="form-label">Price for 2 (INR)</p>
               <div class="form-check">
                 <input
-                  class="form-check-input"
+                  class="pricing"
                   type="radio"
                   name="price"
                   value="500"
@@ -141,7 +141,7 @@
               </div>
               <div class="form-check">
                 <input
-                  class="form-check-input"
+                  class="pricing"
                   type="radio"
                   name="price"
                   value="800"
@@ -151,7 +151,7 @@
               </div>
               <div class="form-check">
                 <input
-                  class="form-check-input"
+                  class="pricing"
                   type="radio"
                   name="price"
                   value="1000"
@@ -163,23 +163,23 @@
             <div class="mb-3">
               <p class="form-label">Cuisine</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <input class="form-check-input" type="checkbox" name="cuisine" id="inlineCheckbox1" value="american">
                 <label class="form-check-label" for="inlineCheckbox1">American</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <input class="form-check-input" type="checkbox" name="cuisine" id="inlineCheckbox2" value="indian">
                 <label class="form-check-label" for="inlineCheckbox2">Indian</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                <input class="form-check-input" type="checkbox" name="cuisine" id="inlineCheckbox3" value="continental">
                 <label class="form-check-label" for="inlineCheckbox3">Continental</label>
               </div>
             </div>
             <div class="mb-3">
               <div class="mb-3 form-check form-switch">
               
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault2">
-                <label class="form-label" for="flexSwitchCheckDefault2">Smoking</label>
+                <input class="form-check-input" type="checkbox" role="switch" id="smoking">
+                <label class="form-label" for="smoking">Smoking</label>
             </div>
             </div>
           </form>
@@ -195,10 +195,10 @@
               <h2 class="resto-name"><%= restaurant.name.toUpperCase() %> </h2>
               
               <p class="place-name text-uppercase"><%= restaurant.location%></p>
-              <p class="tags-name"><%= restaurant.tags%></p>
+              <p class="tags-name text-break"><%= restaurant.tags%></p>
               <p class="desc"><%= restaurant.desc%></p>
               
-              <p>Cost (for 2) : Rs. <span class="price"><%= restaurant.price%></span></p>
+              <p class="fw-bold fs-5">Cost (for 2) : Rs. <span class="price"><%= restaurant.price%></span></p>
               <button class="btn btn-outline-primary contact">CONTACT</button>
             </div>
           </div>
