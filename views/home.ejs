@@ -29,9 +29,13 @@
     <title>Resto</title>
   </head>
   <body>
-    <header>
+
+    <!-- BACK TO TOP BUTTON -->
+
       <a id="button"></a>
+
     <!-- BANNER -->
+
       <nav id="mainNav"  class="navbar navbar-expand-md py-0 fixed-top navbar-dark">
         <div class="container-fluid" style="font-size: 1.5rem;">
           <a class="navbar-brand ps-3" style="color: black; font-size: 2rem; letter-spacing: 2px;" href="/">
@@ -90,13 +94,12 @@
         </div>
         
       </section>
-    </header>
     
     <!-- SORTING -->
 
     <div class="container-fluid main-content" style="padding-left: 60px;">
       <div class="row row2">
-        <div class="col-md-3 filters" style="border-right: solid;">
+        <div class="col-md-3 filters" style="border-right: solid black 1px;">
           <h3>FILTERS</h3>
           <form name="filters">
             <div class="mb-3 form-check form-switch">
@@ -114,7 +117,7 @@
             </div>
             <div class="mb-3">
               <p for="rating" class="form-label">Rating</p>
-                0<input
+                <span class="rating-range">0</span><input
                   type="range"
                   class="form-range"
                   min="0"
@@ -122,7 +125,7 @@
                   value="0"
                   id="rating"
                   style="width: 90%;"
-                />5
+                /><span class="rating-range">5</span>
             </div>
             <div class="mb-3">
               <p class="form-label">Price for 2 (INR)</p>
@@ -179,11 +182,7 @@
                 <label class="form-label" for="flexSwitchCheckDefault2">Smoking</label>
             </div>
             </div>
-            <!-- <div class="mb-3">
-              <button type="submit" class="btn btn-primary filter-submit">GO</button>
-            </div> -->
           </form>
-          
         </div>
         <div class="container-fluid px-0 restaurant-list col-md-9">
           <% restaurants.forEach(restaurant => { %>
@@ -236,16 +235,25 @@
 
 
     
+     <!-- JQUERY -->
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
     <script src="/js/sort.js"></script>
     <script src="/js/filter.js"></script>
     <script src="/js/scroll.js"></script>
+
+     <!-- BOOTSTRAP -->
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+
+     <!-- NAVBAR BACKGROUND ON SCROLL -->
+
     <script>
       $(function () {
         $(document).scroll(function () {

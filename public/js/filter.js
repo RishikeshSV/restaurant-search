@@ -1,3 +1,5 @@
+//get the restuarent list and the parent of the list
+
 const list = document.querySelectorAll(".restaurant-details");
 const parent = document.querySelector(".restaurant-list");
 let ar = Array.from(list);

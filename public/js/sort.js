@@ -40,10 +40,6 @@ function sortBy(isDesc, param) {
     return isDesc ? priceB - priceA : priceA - priceB;
   });
 
-  // ar.forEach((res) => {
-  //   console.log(res.querySelector(".price").innerText);
-  // });
-
   const parent = document.querySelector(".restaurant-list");
   parent.innerHTML = "";
   for (var i = 0; i < ar.length; i++) {

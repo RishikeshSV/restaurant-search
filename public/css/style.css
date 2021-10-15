@@ -124,6 +124,12 @@ footer p {
   color: white;
   font-weight: 500;
 }
+.rating-range {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* BACK TO TOP BUTTON STYLING */
 
 #button {
   display: inline-block;
@@ -160,6 +166,8 @@ footer p {
   opacity: 1;
   visibility: visible;
 }
+
+/* STYLING WHEN WIDTH<750px */
 
 @media (max-width: 750px) {
   .search-bar {
