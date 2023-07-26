@@ -5,4 +5,4 @@ RESTo is a restaurant search portal that aims to provide a smooth experience to 
 use npm i to install dependencies  
 create a .env file like .env.sample file   
 
-Link to website : https://resto-sea.herokuapp.com/
+Link to website : https://resto-search.onrender.com/
